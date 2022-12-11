@@ -16,6 +16,8 @@ def rasch(tests):
     for (i,j), val in np.ndenumerate(res):
         
         res[i,j] = _prob(ab[i], diff[j], onePL)
+        
+        res[i,j] = _prob(ab[i], diff[j], onePL)
     return res
 
 def _prob(ab, dif, model_func, *extra_params):
