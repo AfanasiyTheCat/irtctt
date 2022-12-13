@@ -14,7 +14,6 @@ def metrics(test_results, task_weights = None):
     chisquare, p = chisquare_p_metric(test_results)
     arr = {
         'Дельта Фергюсона': delta_ferguson(test_results, max_score),
-        'Среднее отклонение Раша': rasch_metric(test_results),
         'KR 20': kr_20(test_results),
         "Item Total Correlation": item_total_corr,
         "Альфа Кронбаха": alpha_cronbach,
@@ -34,9 +33,6 @@ def delta_ferguson(test_result: np.ndarray, max_score = None):
     unique, counts = np.unique(test_result_score, return_counts=True)
     counts = np.sum(np.power(counts, 2))
     return (n+1)*(N*N - counts)/(n*N*N)
-
-def rasch_metric(test_result):
-    return np.mean(imath.prob_to_score(rasch(test_result)))
 
 #Метод Кьюдера—Ричардсона KR-20
 def kr_20(test):
